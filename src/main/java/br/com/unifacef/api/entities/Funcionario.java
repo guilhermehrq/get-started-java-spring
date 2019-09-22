@@ -19,13 +19,13 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-import br.com.unifacef.enums.PerfilEnum;
+import br.com.unifacef.api.enums.PerfilEnum;
 
 @Entity
 @Table(name = "funcionario")
 public class Funcionario implements Serializable {
 
-	private static final long serialVersionUID = 6527724947651156442L;
+	private static final long serialVersionUID = 3960290773081482021L;
 
 	private Long id;
 	private String nome;
@@ -38,8 +38,8 @@ public class Funcionario implements Serializable {
 	private PerfilEnum perfil;
 	private Date dataCriacao;
 	private Date dataAtualizacao;
-	private Empresa empresa;
-	private List<Lancamento> lancamentos;
+//	private Empresa empresa;
+//	private List<Lancamento> lancamentos;
 
 	public Funcionario() {
 	}
@@ -145,23 +145,23 @@ public class Funcionario implements Serializable {
 		this.senha = senha;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	public Empresa getEmpresa() {
-		return empresa;
-	}
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	public Empresa getEmpresa() {
+//		return empresa;
+//	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
+//	public void setEmpresa(Empresa empresa) {
+//		this.empresa = empresa;
+//	}
 
-	@OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public List<Lancamento> getLancamentos() {
-		return lancamentos;
-	}
+//	@OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	public List<Lancamento> getLancamentos() {
+//		return lancamentos;
+//	}
 
-	public void setLancamentos(List<Lancamento> lancamentos) {
-		this.lancamentos = lancamentos;
-	}
+//	public void setLancamentos(List<Lancamento> lancamentos) {
+//		this.lancamentos = lancamentos;
+//	}
 
 	@PreUpdate
 	public void preUpdate() {
@@ -177,9 +177,12 @@ public class Funcionario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
-				+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
-				+ qtdHorasAlmoco + ", perfil=" + perfil + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
-				+ dataAtualizacao + "empresa=" + empresa + "]";
+	return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email
+	+ ", senha=" + senha + ", cpf=" + cpf
+	+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" +
+	qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
+	+ qtdHorasAlmoco + ", perfil=" + perfil + ", dataCriacao="
+	+ dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ",	empresa=" + "]";
 	}
+
 }
